@@ -1,5 +1,6 @@
 import { Request, Response, Router } from "express";
 import { deleteItem, getItem, getItems, postItem, updateItem } from "../controllers/item";
+import { logMiddleware } from "../middlewares/log.middleware";
 
 const router = Router()
 
@@ -9,7 +10,7 @@ const router = Router()
 
 router.get('/', getItems)
 
-router.get('/:id', getItem)
+router.get('/:id',logMiddleware, getItem)
 
 router.post('/', postItem)
 
